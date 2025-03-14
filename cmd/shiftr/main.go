@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/olliehpe/shiftr/internal"
 	cnf "github.com/olliehpe/shiftr/internal/config"
 	"github.com/olliehpe/shiftr/internal/fetch"
 	"github.com/olliehpe/shiftr/internal/serve"
@@ -31,13 +32,18 @@ func main() {
 		// save to files
 		log.Println("Saving responses to data files...")
 		for fileName, data := range payloads {
-			if err := store.SaveFile(fileName, data, config.DataFolder); err != nil {
+			compact, err := store.Compact(&data)
+			if err != nil {
+				log.Printf("Error compacting data: %v", err)
+			}
+			if err := store.SaveFile(fileName, compact, config.DataFolder); err != nil {
 				log.Printf("Error saving file: %s", err)
 			}
 		}
 
 		// pause
+		internal.MemUsage()
 		log.Println("Sleeping...")
-		time.Sleep(time.Duration(config.RefreshInterval) * time.Hour)
+		time.Sleep(time.Duration(config.RefreshInterval) * time.Minute)
 	}
 }

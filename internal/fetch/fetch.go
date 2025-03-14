@@ -8,7 +8,6 @@ import (
 )
 
 func GetData(source *internal.Source) []byte {
-
 	client := &http.Client{}
 
 	req, err := http.NewRequest(http.MethodGet, source.Url, nil)
@@ -31,7 +30,7 @@ func GetData(source *internal.Source) []byte {
 		log.Printf("Error fetching %s: %s\n", source.Url, err)
 	}
 
-	if res.StatusCode != 200 {
+	if res.StatusCode != http.StatusOK {
 		log.Printf("Error fetching %s: %s\n", source.Url, res.Status)
 	}
 
