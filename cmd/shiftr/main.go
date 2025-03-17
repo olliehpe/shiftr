@@ -32,11 +32,7 @@ func main() {
 		// save to files
 		log.Println("Saving responses to data files...")
 		for fileName, data := range payloads {
-			compact, err := store.Compact(&data)
-			if err != nil {
-				log.Printf("Error compacting data: %v", err)
-			}
-			if err := store.SaveFile(fileName, compact, config.DataFolder); err != nil {
+			if err := store.SaveFile(fileName, data, config.DataFolder); err != nil {
 				log.Printf("Error saving file: %s", err)
 			}
 		}
