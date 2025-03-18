@@ -34,7 +34,7 @@ func WriteIndex(sources []internal.Source, folder string, refresh int) error {
 		<style>
 			body {
 				margin:500px;
-				margin-top:200px;
+				margin-top:80px;
 				background-color: #bed3fb;
 			}
 			* {
@@ -44,24 +44,49 @@ func WriteIndex(sources []internal.Source, folder string, refresh int) error {
 				padding-top:5px;
 				padding-bottom:5px;
 			}
+			.logo {
+				text-align: center;
+				padding-bottom:30px;
+			}
+			h2 {
+				margin:-20px;
+				padding:0px;
+				padding-bottom:50px;
+			}
+			.footer{
+				margin-top:100px;
+				text-align: center;
+				font-size:14px;
+			}
 		</style>
 	</head>
 	<body>
 		<div class="logo">
+			<pre>
+  _________.__    .__  _____  __                
+ /   _____/|  |__ |__|/ ____\/  |_  ___________ 
+ \_____  \ |  |  \|  \   __\\   __\/ __ \_  __ \
+ /        \|   Y  \  ||  |   |  | \  ___/|  | \/
+/_______  /|___|  /__||__|   |__|  \___  >__|   
+        \/      \/                     \/
+			</pre>
+			<h2>Cached Endpoints</h2>
 		</div>
-		<h2>Cached Endpoints</h2>
+		
 		<p>The following data sources are cached locally and available:</p>
 			%s
-		<p>Last refresh: %s<br/>
-		Refresh Interval: %d mins</p>
+		<div class="footer">
+			<p>Last refresh: %s</p>
+			<p>Refresh Interval: %d mins</p>
+		</div>
 	</body>
 </html>
 `
 	htmlSources := ""
 	htmlSource := `<div class="source">
 	<h3>%s</h3>
-	<p>Remote URL: %s<br/>
-	Local Endpoint: <a href="%s">/%s</a></p>
+	<p><b>Remote URL:</b> %s<br/>
+	<b>Local Endpoint:</b> <a href="%s">/%s</a></p>
 </div>
 <hr>
 `
