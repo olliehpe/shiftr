@@ -45,4 +45,4 @@ http://localhost:8080/data1.json
 http://localhost:8080/data2.json
 ```
 
-The `index.html` page of the server shows which sources are being cached on the server, last refresh and refresh interval.
+The `index.html` page of the server shows which sources are being cached on the server, 'last refresh' and 'refresh interval'.
