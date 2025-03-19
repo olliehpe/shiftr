@@ -44,3 +44,5 @@ In the above configuration example, the files will be saved in a `data` folder a
 http://localhost:8080/data1.json
 http://localhost:8080/data2.json
 ```
+
+The `index.html` page of the server shows which sources are being cached on the server, last refresh and refresh interval.
