@@ -73,7 +73,7 @@ func WriteIndex(sources []internal.Source, folder string, refresh int) error {
 			<h2>Cached Endpoints</h2>
 		</div>
 		
-		<p>The following data sources are cached locally and available:</p>
+		<hr>
 			%s
 		<div class="footer">
 			<p>Last refresh: %s</p>

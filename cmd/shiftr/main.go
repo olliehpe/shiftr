@@ -10,6 +10,11 @@ import (
 	"time"
 )
 
+var (
+	version   = "Development build"
+	goversion = "Unknown"
+)
+
 func main() {
 	config := cnf.LoadConfig()
 
