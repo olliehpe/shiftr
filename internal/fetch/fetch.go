@@ -29,6 +29,7 @@ func GetData(source *internal.Source) []byte {
 	if err != nil {
 		log.Printf("Error fetching %s: %s\n", source.Url, err)
 	}
+	defer res.Body.Close()
 
 	if res.StatusCode != http.StatusOK {
 		log.Printf("Error fetching %s: %s\n", source.Url, res.Status)

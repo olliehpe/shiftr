@@ -43,7 +43,7 @@ func main() {
 		}
 
 		// create an index.html file so the cached resources are documented
-		if err := store.WriteIndex(config.Sources, config.DataFolder, config.RefreshInterval); err != nil {
+		if err := store.WriteIndex(config.Sources, config.DataFolder, config.RefreshInterval, version); err != nil {
 			log.Fatalf("Error writing index.html: %v", err)
 		}
 

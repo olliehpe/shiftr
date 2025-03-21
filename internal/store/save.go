@@ -25,7 +25,7 @@ func SaveFile(name string, data []byte, folder string) error {
 	return nil
 }
 
-func WriteIndex(sources []internal.Source, folder string, refresh int) error {
+func WriteIndex(sources []internal.Source, folder string, refresh int, version string) error {
 	file := `<html>
 	<head>
 		<meta charset="utf-8" />
@@ -51,12 +51,15 @@ func WriteIndex(sources []internal.Source, folder string, refresh int) error {
 			h2 {
 				margin:-20px;
 				padding:0px;
-				padding-bottom:50px;
+				padding-bottom:30px;
 			}
 			.footer{
 				margin-top:100px;
 				text-align: center;
 				font-size:14px;
+			}
+			.version{
+				padding-bottom:20px;
 			}
 		</style>
 	</head>
@@ -71,6 +74,7 @@ func WriteIndex(sources []internal.Source, folder string, refresh int) error {
         \/      \/                     \/
 			</pre>
 			<h2>Cached Endpoints</h2>
+			<div class="version">%s</div
 		</div>
 		
 		<hr>
@@ -101,7 +105,7 @@ func WriteIndex(sources []internal.Source, folder string, refresh int) error {
 	}
 
 	nowTime := time.Now().String()
-	file = fmt.Sprintf(file, htmlSources, nowTime, refresh)
+	file = fmt.Sprintf(file, version, htmlSources, nowTime, refresh)
 	target := filepath.Join(folder, "index.html")
 	if err := os.WriteFile(target, []byte(file), 0755); err != nil {
 		return err
