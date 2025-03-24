@@ -26,7 +26,8 @@ sources:
     basic_auth:
       username: "myuser"
       password: "mypassword"
-
+    enabled: True
+    
   - name: "Test payload 2"
     url: "https://microsoftedge.github.io/Demos/json-dummy-data/64KB-min.json"
     server_filename: "data2.json"
@@ -35,7 +36,7 @@ sources:
     basic_auth:
       username: "myuser"
       password: "mypassword"
-
+    enabled: True
 ```
 
 In the above configuration example, the files will be saved in a `data` folder and served at these endpoints:

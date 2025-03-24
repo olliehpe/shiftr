@@ -31,7 +31,9 @@ func main() {
 		payloads := map[string][]byte{}
 
 		for _, source := range config.Sources {
-			payloads[source.ServerFilename] = fetch.GetData(&source)
+			if source.Enabled {
+				payloads[source.ServerFilename] = fetch.GetData(&source)
+			}
 		}
 
 		// save to files

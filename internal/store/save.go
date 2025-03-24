@@ -96,14 +96,16 @@ func WriteIndex(sources []internal.Source, folder string, refresh int, version s
 `
 
 	for _, source := range sources {
-		url := source.Url
-		if len(source.Url) > 150 {
-			url = source.Url[:150] + "..."
+		if source.Enabled {
+			url := source.Url
+			if len(source.Url) > 150 {
+				url = source.Url[:150] + "..."
+			}
+			htmlSourceEdit := fmt.Sprintf(htmlSource, source.Name, url, source.ServerFilename, source.ServerFilename)
+			htmlSources += htmlSourceEdit
 		}
-		htmlSourceEdit := fmt.Sprintf(htmlSource, source.Name, url, source.ServerFilename, source.ServerFilename)
-		htmlSources += htmlSourceEdit
 	}
-
+	
 	nowTime := time.Now().String()
 	file = fmt.Sprintf(file, version, htmlSources, nowTime, refresh)
 	target := filepath.Join(folder, "index.html")

@@ -18,6 +18,7 @@ type Source struct {
 	ServerFilename string            `yaml:"server_filename"`
 	Headers        map[string]string `yaml:"headers"`
 	BasicAuth      BasicAuth         `yaml:"basic_auth"`
+	Enabled        bool              `yaml:"enabled"`
 }
 
 type BasicAuth struct {
